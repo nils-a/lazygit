@@ -14,11 +14,6 @@ type viewUpdateOpts struct {
 	task updateTask
 }
 
-type coordinates struct {
-	x int
-	y int
-}
-
 type refreshMainOpts struct {
 	main      *viewUpdateOpts
 	secondary *viewUpdateOpts

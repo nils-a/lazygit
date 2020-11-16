@@ -110,9 +110,9 @@ func (gui *Gui) refreshSidePanels(options refreshOptions) error {
 			wg.Add(1)
 			func() {
 				if options.mode == ASYNC {
-					go utils.Safe(func() { gui.refreshCommits() })
+					go utils.Safe(func() { _ = gui.refreshCommits() })
 				} else {
-					gui.refreshCommits()
+					_ = gui.refreshCommits()
 				}
 				wg.Done()
 			}()
@@ -122,9 +122,9 @@ func (gui *Gui) refreshSidePanels(options refreshOptions) error {
 			wg.Add(1)
 			func() {
 				if options.mode == ASYNC {
-					go utils.Safe(func() { gui.refreshFilesAndSubmodules() })
+					go utils.Safe(func() { _ = gui.refreshFilesAndSubmodules() })
 				} else {
-					gui.refreshFilesAndSubmodules()
+					_ = gui.refreshFilesAndSubmodules()
 				}
 				wg.Done()
 			}()
@@ -134,9 +134,9 @@ func (gui *Gui) refreshSidePanels(options refreshOptions) error {
 			wg.Add(1)
 			func() {
 				if options.mode == ASYNC {
-					go utils.Safe(func() { gui.refreshStashEntries() })
+					go utils.Safe(func() { _ = gui.refreshStashEntries() })
 				} else {
-					gui.refreshStashEntries()
+					_ = gui.refreshStashEntries()
 				}
 				wg.Done()
 			}()
@@ -146,9 +146,9 @@ func (gui *Gui) refreshSidePanels(options refreshOptions) error {
 			wg.Add(1)
 			func() {
 				if options.mode == ASYNC {
-					go utils.Safe(func() { gui.refreshTags() })
+					go utils.Safe(func() { _ = gui.refreshTags() })
 				} else {
-					gui.refreshTags()
+					_ = gui.refreshTags()
 				}
 				wg.Done()
 			}()
@@ -158,9 +158,9 @@ func (gui *Gui) refreshSidePanels(options refreshOptions) error {
 			wg.Add(1)
 			func() {
 				if options.mode == ASYNC {
-					go utils.Safe(func() { gui.refreshRemotes() })
+					go utils.Safe(func() { _ = gui.refreshRemotes() })
 				} else {
-					gui.refreshRemotes()
+					_ = gui.refreshRemotes()
 				}
 				wg.Done()
 			}()

@@ -280,9 +280,7 @@ func (gui *Gui) contextTree() ContextTree {
 		},
 		Merging: SimpleContextNode{
 			Context: BasicContext{
-				OnFocus: func() error {
-					return gui.refreshMergePanel()
-				},
+				OnFocus:         gui.refreshMergePanel,
 				Kind:            MAIN_CONTEXT,
 				ViewName:        "main",
 				Key:             MAIN_MERGING_CONTEXT_KEY,
@@ -291,7 +289,7 @@ func (gui *Gui) contextTree() ContextTree {
 		},
 		Credentials: SimpleContextNode{
 			Context: BasicContext{
-				OnFocus:  func() error { return gui.handleCredentialsViewFocused() },
+				OnFocus:  gui.handleCredentialsViewFocused,
 				Kind:     PERSISTENT_POPUP,
 				ViewName: "credentials",
 				Key:      CREDENTIALS_CONTEXT_KEY,
@@ -307,7 +305,7 @@ func (gui *Gui) contextTree() ContextTree {
 		},
 		CommitMessage: SimpleContextNode{
 			Context: BasicContext{
-				OnFocus:  func() error { return gui.handleCommitMessageFocused() },
+				OnFocus:  gui.handleCommitMessageFocused,
 				Kind:     PERSISTENT_POPUP,
 				ViewName: "commitMessage",
 				Key:      COMMIT_MESSAGE_CONTEXT_KEY,
@@ -513,7 +511,7 @@ func (gui *Gui) activateContext(c Context) error {
 	if viewName == "main" {
 		gui.changeMainViewsContext(c.GetKey())
 	} else {
-		gui.changeMainViewsContext("normal")
+		gui.changeMainViewsContext(MAIN_NORMAL_CONTEXT_KEY)
 	}
 
 	gui.setViewTabForContext(c)
